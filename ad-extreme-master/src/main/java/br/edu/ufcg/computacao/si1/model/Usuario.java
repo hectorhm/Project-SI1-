@@ -25,8 +25,8 @@ public class Usuario extends org.springframework.security.core.userdetails.User{
     private String role;
     @Column
     private double saldo = 0.0;
-    
-    private String anuncios = "";
+    /*
+    private String anuncios = "";*/
 
     public Usuario() {
         super("default", "default", AuthorityUtils.createAuthorityList("USER"));
@@ -96,22 +96,17 @@ public class Usuario extends org.springframework.security.core.userdetails.User{
     public void setSaldo(double novoSaldo) {
     	this.saldo = novoSaldo;
     }
-    
+    /*
     public void cadastrarAnuncio(Anuncio anuncio){
-    	anuncio.setDonoAnuncio(this);
     	anuncios += anuncio;
     }
     
     public String getAnuncios(){
     	return anuncios;
     }   
-    
+    */
     public String toString(){
     	return String.format("%s{Nome=%s, Contato='%s'}", role, nome, email);
-    }
-    
-    public String getPerfil(){
-    	return this.toString() +"\n"+ anuncios.toString();
     }
     
 }
