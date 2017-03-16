@@ -110,4 +110,8 @@ public class Usuario extends org.springframework.security.core.userdetails.User{
     	return String.format("%s{Nome=%s, Contato='%s'}", role, nome, email);
     }
     
+    public String getPerfil(){
+    	return this.toString() +"\n"+ anuncios.toString();
+    }
+    
 }
