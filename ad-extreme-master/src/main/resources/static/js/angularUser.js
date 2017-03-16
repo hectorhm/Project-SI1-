@@ -1,6 +1,7 @@
-var Anunciantes = angular.module("Anunciantes", []);
-Anunciantes.controller("anunciantesCtrl", ['$scope', '$http', function($scope, $http, $rootScope) {
-	$scope.usuarios = {};
+var companyAnunciantes = angular.module("AD-Extreme", []);
+companyAnunciantes.controller("anunciantesUserCtrl", ['$scope', '$http', function($scope, $http, $rootScope) {
+	$scope.usuarios = [];
+	$rootScope.usuario = {};
 
 	function carregarUsuarios(){
 		$http({
@@ -20,7 +21,7 @@ Anunciantes.controller("anunciantesCtrl", ['$scope', '$http', function($scope, $
 			url:'http://localhost:8080/anunciantes/'+id
 		}).then(function sucessCallback(response){
 			$rootScope.id = id;
-			window.open('/anunciantes/'+id);
+			window.open('/user/anunciantes/'+id);
 		}, function unsucessCallback(response){
 			alert("Usuario nao cadastrado!");
 		});
@@ -30,14 +31,14 @@ Anunciantes.controller("anunciantesCtrl", ['$scope', '$http', function($scope, $
 
 
 
-var Anunciante = angular.module("Anunciante", []);
-Anunciante.controller("anuncianteCtrl", ['$scope', '$http', function($scope, $http, $rootScope) {
+var companyAnunciante = angular.module("AD-Extreme", []);
+companyAnunciante.controller("anuncianteUserCtrl", ['$scope', '$http', function($scope, $http, $rootScope) {
 	$scope.usuario = {};	
 
 	function carregarUsuario(){
 		$http({
 			method:'GET',
-			url:'http://localhost:8080/anunciantes/'+$rootScope.id
+			url:'http://localhost:8080/anunciantes/'
 		}).then(function sucessCallback(response){
 			$scope.usuario = response.data;
 		}, function unsucessCallback(response){

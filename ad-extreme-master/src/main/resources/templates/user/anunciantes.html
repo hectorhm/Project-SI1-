@@ -1,15 +1,11 @@
 <!DOCTYPE html>
-<html ng-app="Anunciantes" xmlns:th="http://www.thymeleaf.org"
+<html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout/layout_user">
-<meta charset="utf-8" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js">
-</script>
 <head>
 <title>.:: ad-extreme ::. - anunciantes</title>
 </head>
-<th:block layout:fragment="conteudo" ng-controller="anunciantesCtrl">
+<th:block layout:fragment="conteudo">
 	<ul ng-repeat="usuario in usuarios">
 		<li>
 		<span ng-click="anunciante(usuario.id)">Anunciante: {{usuario.nome}}, Contato: {{usuario.email}}</span>
@@ -17,5 +13,4 @@
 		</li>		
 	</ul>
 </th:block>
-<script src="./js/main.js"></script>
 </html>

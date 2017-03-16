@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="pt-br">
+<html 	ng-app="adextreme"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="pt-br">
 <head>
 <meta charset="UTF-8" />
 <title>.:: ad-extreme ::.</title>
@@ -13,8 +14,11 @@
 	th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}"
 	media="screen" />
 <link rel="stylesheet" th:href="@{/css/style.css}" media="screen" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.js">
+</script>
 </head>
-<body>
+<body ng-controller="anuncianteUserCtrl">
 	<!-- init menu -->
 	<div id="menu" class="navbar navbar-default " role="navigation">
 		<div class="container-fluid">
@@ -42,6 +46,7 @@
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
+					<li><a th:href="@{/user/anunciante/}">Meu Perfil</a></li>
 					<li><a href="javascript:document.logout.submit()"><i
 							class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
 						<form name="logout" th:action="@{/logout}" method="post"
@@ -71,6 +76,8 @@
 	<!-- end footer -->
 	<script th:src="@{/webjars/jquery/1.12.1/jquery.min.js}"></script>
 	<script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"></script>
+	<script th:src="@{./js/angularUser.js}"></script>
+	
 	<th:block layout:fragment="js-extra"></th:block>
 </body>
 </html>
