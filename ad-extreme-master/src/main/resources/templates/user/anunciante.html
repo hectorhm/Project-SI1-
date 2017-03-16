@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html ng-app="Anunciante" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/layout_user">
+<meta charset="utf-8" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js">
+</script>
+<head>
+<title>.:: ad-extreme ::. - anunciante</title>
+</head>
+<th:block layout:fragment="conteudo" ng-controller="anuncianteCtrl">
+	<p>Anunciante: {{usuario.nome}}, Contato: {{usuario.email}}</p>
+	<!-- <br /><span>{{usuarios.anuncios}}</span> -->
+</th:block>
+<script src="./js/main.js"></script>
+</html>

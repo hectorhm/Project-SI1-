@@ -33,14 +33,7 @@ public class AnuncianteController {
 		return response;
 
 	}
-/*
-	@RequestMapping(value ="/user/anunciantes/{id}", method = RequestMethod.GET)
-	public ModelAndView getPageAnunciantes(){
-		ModelAndView model = new ModelAndView();
-
-		return model;
-	}
-*/
+	
 	@RequestMapping(value = "/anunciantes", method = RequestMethod.GET)
 	public ResponseEntity<Collection<Usuario>> getAnunciantes(){
 		Collection<Usuario> usuarios = usuarioService.getAll();
@@ -50,4 +43,25 @@ public class AnuncianteController {
 		return new ResponseEntity<>(usuarios,HttpStatus.NOT_FOUND);
 
 	}
+	
+	@RequestMapping(value ="/user/anunciantes", method = RequestMethod.GET)
+	public String getPageAnunciantesUser(){
+		return "user/anunciantes";
+	}
+	
+	@RequestMapping(value ="/user/anunciantes/{id}", method = RequestMethod.GET)
+	public String getPageAnuncianteUser(@PathVariable Long id){
+		return "user/anunciante";
+	}
+	
+	@RequestMapping(value ="/company/anunciantes", method = RequestMethod.GET)
+	public String getPageAnunciantesCompany(){
+		return "company/anunciantes";
+	}
+	
+	@RequestMapping(value ="/company/anunciantes/{id}", method = RequestMethod.GET)
+	public String getPageAnuncianteCompany(@PathVariable Long id){
+		return "company/anunciante";
+	}
+	 
 }
