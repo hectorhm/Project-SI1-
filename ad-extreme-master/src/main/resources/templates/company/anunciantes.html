@@ -1,24 +1,37 @@
 <!DOCTYPE html>
-<html 
-	xmlns:th="http://www.thymeleaf.org"
+<html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout/layout_company">
 <head>
 <title>.:: ad-extreme ::. - anunciantes</title>
 </head>
-<th:block layout:fragment="conteudo" ng-controller="anunciantesCompanyCtrl">
-	<ul ng-repeat="user in usuarios">
-		<li><span ng-click="anunciante(user.id)">Anunciante:
-				{{user.nome}}, Contato: {{user.email}}</span>
-				 <!-- 
-				<ul ng-repeat="anuncio in usuarios.anuncios">
-					<li>
-						<br /><span>{{usuarios.anuncios}}</span>
-					</li>
-				</ul>
-				 -->
-		 </li>
-		
-	</ul>
+<th:block layout:fragment="conteudo"
+	ng-controller="anunciantesCompanyCtrl">
+	<h1>Anunciantes</h1>
+
+	<div class="table-responsive">
+		<table style="width: 100%" class="table table-bordered">
+			<tr>
+				<th>Nome</th>
+				<th>Contato</th>
+				<!-- <th>Anuncios</th>  -->
+				<!-- <th align="right">Preço</th> -->
+				<th>Favorito</th>
+			</tr>
+
+			<th:block th:ng-repeat="user in usuarios">
+				<tr>
+					<td>{{user.nome}}</td>
+					<td>{{user.email}}</td>
+					<!-- <td th:text="${item.dataDeCriacao}"> - </td>
+                        <td align="center" th:text="${'R$ ' + #numbers.formatDecimal(item.preco, 0, 'COMMA', 2, 'POINT')}">0.00</td> 
+                        -->
+					<td>&#10008;</td> <!--x e &#10004; p v  -->
+				</tr>
+			</th:block>
+		</table>
+	</div>
+</th:block>
+</html>
 </th:block>
 </html>

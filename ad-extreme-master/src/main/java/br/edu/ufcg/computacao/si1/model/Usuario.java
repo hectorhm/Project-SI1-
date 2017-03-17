@@ -1,5 +1,9 @@
 package br.edu.ufcg.computacao.si1.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
+import javax.annotation.Resource;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,8 +29,10 @@ public class Usuario extends org.springframework.security.core.userdetails.User{
     private String role;
     @Column
     private double saldo = 0.0;
-    /*
-    private String anuncios = "";*/
+    @Resource(name="meus_favoritos")
+    private Collection<Usuario> favoritos = new ArrayList<>();
+    /*@Resource(name="meus_anuncios")
+    private Collection<Anuncio> anuncios = new ArrayList<>();*/
 
     public Usuario() {
         super("default", "default", AuthorityUtils.createAuthorityList("USER"));
@@ -96,17 +102,29 @@ public class Usuario extends org.springframework.security.core.userdetails.User{
     public void setSaldo(double novoSaldo) {
     	this.saldo = novoSaldo;
     }
-    /*
-    public void cadastrarAnuncio(Anuncio anuncio){
-    	anuncios += anuncio;
-    }
     
-    public String getAnuncios(){
-    	return anuncios;
-    }   
-    */
     public String toString(){
     	return String.format("%s{Nome=%s, Contato='%s'}", role, nome, email);
+    }
+    /*
+    public void cadastrarAnuncio(Anuncio anuncio){
+    	anuncios.add(anuncio);
+    }
+    
+    public Collection<Anuncio> getAnuncios(){
+    	return anuncios;
+    }   */
+    
+    public Collection<Usuario> getFavoritos(){
+    	return favoritos;
+    }
+    
+    public void removeFavorito(Usuario usuario){
+    	favoritos.remove(usuario);
+    }
+    
+    public void addFavorito(Usuario usuario){
+    	favoritos.add(usuario);
     }
     
 }

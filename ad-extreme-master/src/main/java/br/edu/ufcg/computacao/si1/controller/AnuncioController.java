@@ -1,9 +1,7 @@
 package br.edu.ufcg.computacao.si1.controller;
 
-import br.edu.ufcg.computacao.si1.model.Anuncio;
-import br.edu.ufcg.computacao.si1.model.form.AnuncioForm;
-import br.edu.ufcg.computacao.si1.repository.AnuncioRepository;
-import br.edu.ufcg.computacao.si1.service.AnuncioServiceImpl;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -12,7 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.validation.Valid;
+import br.edu.ufcg.computacao.si1.model.Anuncio;
+import br.edu.ufcg.computacao.si1.model.form.AnuncioForm;
+import br.edu.ufcg.computacao.si1.repository.AnuncioRepository;
+import br.edu.ufcg.computacao.si1.service.AnuncioServiceImpl;
 
 @Controller
 public class AnuncioController {
@@ -22,6 +23,9 @@ public class AnuncioController {
 
     @Autowired
     private AnuncioRepository anuncioRep;
+    
+    /*@Autowired
+    private UsuarioService usuarioService;*/
 
     @RequestMapping(value = "/user/cadastrar/anuncio", method = RequestMethod.GET)
     public ModelAndView getPageCadastrarAnuncio(AnuncioForm anuncioForm){
@@ -54,7 +58,11 @@ public class AnuncioController {
         anuncio.setTitulo(anuncioForm.getTitulo());
         anuncio.setPreco(anuncioForm.getPreco());
         anuncio.setTipo(anuncioForm.getTipo());
-
+        
+        /*Usuario usuario = usuarioService.getByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
+        usuario.cadastrarAnuncio(anuncio);
+        usuarioService.update(usuario);*/
+        
         anuncioService.create(anuncio);
 
         attributes.addFlashAttribute("mensagem", "Anúncio cadastrado com sucesso!");
