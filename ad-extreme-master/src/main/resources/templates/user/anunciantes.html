@@ -1,15 +1,22 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
+<html	 
+	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout/layout_user">
 <head>
 <title>.:: ad-extreme ::. - anunciantes</title>
 </head>
-<th:block layout:fragment="conteudo">
-	<ul ng-repeat="usuario in usuarios">
-		<li>
-		<span ng-click="anunciante(usuario.id)">Anunciante: {{usuario.nome}}, Contato: {{usuario.email}}</span>
-		<!-- <br /><span>{{usuarios.anuncios}}</span> -->
+<th:block layout:fragment="conteudo" ng-controller="anunciantesUserCtrl">
+	<ul ng-repeat="user in usuarios">
+		<li><span ng-click="anunciante(user.id)">Anunciante:
+				{{user.nome}}, Contato: {{user.email}}</span>
+			<!-- 
+			<ul ng-repeat="anuncio in usuarios.anuncios">
+					<li>
+						<br /><span>{{usuarios.anuncios}}</span>
+					</li>
+			</ul>
+			-->
 		</li>		
 	</ul>
 </th:block>

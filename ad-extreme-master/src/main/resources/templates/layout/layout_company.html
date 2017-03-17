@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html ng-ap="adextreme" xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="pt-br">
+<html 
+		ng-app="AD-Extreme"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="pt-br">
 <head>
 <meta charset="UTF-8" />
 <title>.:: ad-extreme ::.</title>
@@ -14,11 +16,11 @@
 	th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}"
 	media="screen" />
 <link rel="stylesheet" th:href="@{/css/style.css}" media="screen" />
-<script
+<script 
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.js">
 </script>
 </head>
-<body ng-controller="anuncianteCompanyCtrl">
+<body>
 	<!-- init menu -->
 	<div id="menu" class="navbar navbar-default " role="navigation">
 		<div class="container-fluid">
@@ -91,8 +93,9 @@
 	<!-- end footer -->
 	<script th:src="@{/webjars/jquery/1.12.1/jquery.min.js}"></script>
 	<script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"></script>
-	<script th:src="@{./js/angularCompany.js}"></script>
-
+	<script src="/js/angularCompany.js"></script>
+	<!-- <script th:src="@{./js/angularCompany.js}"></script> -->
+	
 	<th:block layout:fragment="js-extra"></th:block>
 </body>
 

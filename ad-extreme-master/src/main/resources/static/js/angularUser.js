@@ -1,16 +1,16 @@
-var companyAnunciantes = angular.module("AD-Extreme", []);
-companyAnunciantes.controller("anunciantesUserCtrl", ['$scope', '$http', function($scope, $http, $rootScope) {
+var userAnuncios = angular.module("AD-Extreme", []);
+userAnuncios.controller("anunciantesUserCtrl", ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
 	$scope.usuarios = [];
 	$rootScope.usuario = {};
 
 	function carregarUsuarios(){
 		$http({
 			method:'GET', 
-			url:'http://localhost:8080/anunciantes/'
+			url:'dados/anunciantes'
 		}).then(function sucessCallback(response){
 			$scope.usuarios = response.data;
 		}, function unsucessCallback(response){
-			alert("Nenhum usuario cadastrado!")
+			console.log(response.status);
 		});
 	}
 	carregarUsuarios();
@@ -18,7 +18,7 @@ companyAnunciantes.controller("anunciantesUserCtrl", ['$scope', '$http', functio
 	function anunciante(id){
 		$http({
 			method: 'GET',
-			url:'http://localhost:8080/anunciantes/'+id
+			url:'dados/anunciantes/'+id
 		}).then(function sucessCallback(response){
 			$rootScope.id = id;
 			window.open('/user/anunciantes/'+id);
@@ -29,10 +29,7 @@ companyAnunciantes.controller("anunciantesUserCtrl", ['$scope', '$http', functio
 
 }]);
 
-
-
-var companyAnunciante = angular.module("AD-Extreme", []);
-companyAnunciante.controller("anuncianteUserCtrl", ['$scope', '$http', function($scope, $http, $rootScope) {
+userAnuncios.controller("anuncianteUserCtrl", ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
 	$scope.usuario = {};	
 
 	function carregarUsuario(){

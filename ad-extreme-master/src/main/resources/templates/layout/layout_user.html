@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html 	ng-app="adextreme"
+<html 
+		ng-app="AD-Extreme"
 		xmlns:th="http://www.thymeleaf.org"
 		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="pt-br">
 <head>
@@ -18,7 +19,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.js">
 </script>
 </head>
-<body ng-controller="anuncianteUserCtrl">
+<body>
 	<!-- init menu -->
 	<div id="menu" class="navbar navbar-default " role="navigation">
 		<div class="container-fluid">
@@ -76,7 +77,8 @@
 	<!-- end footer -->
 	<script th:src="@{/webjars/jquery/1.12.1/jquery.min.js}"></script>
 	<script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"></script>
-	<script th:src="@{./js/angularUser.js}"></script>
+	<script src="/js/angularUser.js"></script>
+	<!-- <script th:src="@{./js/angularUser.js}"></script> -->
 	
 	<th:block layout:fragment="js-extra"></th:block>
 </body>
