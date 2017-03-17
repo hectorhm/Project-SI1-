@@ -3,7 +3,6 @@ package br.edu.ufcg.computacao.si1.model;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.annotation.Resource;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
 
 @Entity(name = "Usuario")
@@ -29,9 +29,9 @@ public class Usuario extends org.springframework.security.core.userdetails.User{
     private String role;
     @Column
     private double saldo = 0.0;
-    @Resource(name="meus_favoritos")
+    /*@Autowired
     private Collection<Usuario> favoritos = new ArrayList<>();
-    /*@Resource(name="meus_anuncios")
+    @Resource(name="meus_anuncios")
     private Collection<Anuncio> anuncios = new ArrayList<>();*/
 
     public Usuario() {
@@ -114,7 +114,7 @@ public class Usuario extends org.springframework.security.core.userdetails.User{
     public Collection<Anuncio> getAnuncios(){
     	return anuncios;
     }   */
-    
+    /*
     public Collection<Usuario> getFavoritos(){
     	return favoritos;
     }
@@ -126,5 +126,5 @@ public class Usuario extends org.springframework.security.core.userdetails.User{
     public void addFavorito(Usuario usuario){
     	favoritos.add(usuario);
     }
-    
+    */
 }

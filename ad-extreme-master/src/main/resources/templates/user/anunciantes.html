@@ -11,21 +11,22 @@
 	<div class="table-responsive">
 		<table style="width: 100%" class="table table-bordered">
 			<tr>
+				<th>ID</th>
 				<th>Nome</th>
 				<th>Contato</th>
 				<!-- <th>Anuncios</th>  -->
 				<!-- <th align="right">Preço</th> -->
-				<th>Favorito</th>
 			</tr>
 
 			<th:block th:ng-repeat="user in usuarios">
 				<tr>
+					<td>{{user.id}}</td>
 					<td>{{user.nome}}</td>
 					<td>{{user.email}}</td>
 					<!-- <td th:text="${item.dataDeCriacao}"> - </td>
                         <td align="center" th:text="${'R$ ' + #numbers.formatDecimal(item.preco, 0, 'COMMA', 2, 'POINT')}">0.00</td> 
-                        -->
-                     <td>&#10008;</td> <!--x e &#10004; p v  -->
+                     <td>&#10008;</td> e &#10004; p v
+					 -->
 				</tr>
 			</th:block>
 		</table>
