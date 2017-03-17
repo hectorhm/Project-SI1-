@@ -17,9 +17,9 @@ import java.util.stream.Collectors;
 public class AnuncioServiceImpl implements AnuncioService {
     //TODO add validity checks
 
+	@Autowired
     private AnuncioRepository anuncioRepository;
 
-    @Autowired
     public AnuncioServiceImpl(AnuncioRepository anuncioRepository) {
         /*neste codigo apenas atribuimos o repositorio jpa ao atributo */
         this.anuncioRepository = anuncioRepository;

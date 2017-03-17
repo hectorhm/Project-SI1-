@@ -15,9 +15,10 @@ import java.util.Optional;
 public class CustomUserDetailsService implements UserDetailsService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Serializable.class);
-    private final UsuarioService userService;
 
     @Autowired
+    private final UsuarioService userService;
+
     public CustomUserDetailsService(UsuarioService userService) {
         this.userService = userService;
     }

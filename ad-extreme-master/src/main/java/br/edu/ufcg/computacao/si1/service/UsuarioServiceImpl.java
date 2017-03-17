@@ -11,10 +11,10 @@ import java.util.Optional;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService{
-
+	
+	@Autowired
     private UsuarioRepository usuarioRepository;
 
-    @Autowired
     public void setUsuarioRepository(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
     }

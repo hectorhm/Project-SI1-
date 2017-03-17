@@ -1,21 +1,22 @@
 package br.edu.ufcg.computacao.si1.controller;
 
-import br.edu.ufcg.computacao.si1.model.Anuncio;
-import br.edu.ufcg.computacao.si1.model.Usuario;
-import br.edu.ufcg.computacao.si1.service.AnuncioServiceImpl;
-import br.edu.ufcg.computacao.si1.service.UsuarioService;
-
 import java.util.Collection;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import br.edu.ufcg.computacao.si1.model.Anuncio;
+import br.edu.ufcg.computacao.si1.model.Usuario;
+import br.edu.ufcg.computacao.si1.service.AnuncioServiceImpl;
+import br.edu.ufcg.computacao.si1.service.UsuarioServiceImpl;
 
 @RestController
 public class RestAnuncioController {
@@ -24,7 +25,7 @@ public class RestAnuncioController {
 	private AnuncioServiceImpl anuncioService;
 
 	@Autowired
-	private UsuarioService usuarioService;
+	private UsuarioServiceImpl usuarioService;
 
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public ResponseEntity<Collection<Usuario>> getUsers(){
@@ -51,17 +52,19 @@ public class RestAnuncioController {
 	}
 
 	@RequestMapping(value = "/logged", method = RequestMethod.GET)
-	public ResponseEntity<String> getLoggedUser(){
+	public ResponseEntity<String> getEmailLogged(){
 
 		return new ResponseEntity<>(SecurityContextHolder.getContext().getAuthentication().getName(), HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/loggedUser", method = RequestMethod.GET)
-	public ResponseEntity<Usuario> getLogged(){
-		Usuario usuarioProcurado = usuarioService.getByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
-		
-		return new ResponseEntity<>(usuarioProcurado, HttpStatus.OK);
-		
+	@RequestMapping(value = "/loggedUser", method = RequestMethod.GET,
+			produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Usuario> getUserLogged(){
+		Optional<Usuario> usuarioProcurado = usuarioService.getByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+		if(usuarioProcurado.isPresent()){
+			return new ResponseEntity<>(usuarioProcurado.get(), HttpStatus.OK);			
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);	
 	}
 
 }
